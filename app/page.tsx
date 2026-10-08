@@ -351,7 +351,7 @@ export default function Home() {
               Research
             </Link>
             <Link
-              href="/blog"
+              href="/blog/"
               className="border border-[var(--line-strong)] px-5 py-2.5 text-[11px] uppercase tracking-[0.24em] hover:border-[var(--ivory)]"
             >
               Blog
