@@ -4,12 +4,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { TwinDock } from "@/components/TwinChat";
 import { nav, person } from "@/lib/content";
 
 export function SiteChrome({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [progress, setProgress] = useState(0);
+  const twinOn = process.env.NEXT_PUBLIC_TWIN_ENABLED !== "0";
+  const links = twinOn ? nav : nav.filter((item) => item.href !== "/twin/");
 
   useEffect(() => {
     setOpen(false);
@@ -53,7 +56,7 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
           </Link>
 
           <nav className="hidden items-center gap-6 lg:flex">
-            {nav.map((item) => {
+            {links.map((item) => {
               const active =
                 item.href === "/"
                   ? pathname === "/"
@@ -107,7 +110,7 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
         {open ? (
           <div className="border-t border-[var(--line)] bg-[var(--ink)] px-5 py-6 lg:hidden">
             <div className="flex flex-col gap-4">
-              {nav.map((item) => (
+              {links.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
@@ -130,6 +133,14 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
               >
                 Download CV
               </a>
+              {twinOn ? (
+                <Link
+                  href="/twin/"
+                  className="text-sm uppercase tracking-[0.22em] text-[var(--gold)]"
+                >
+                  Digital twin
+                </Link>
+              ) : null}
             </div>
           </div>
         ) : null}
@@ -202,6 +213,7 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
           </div>
         </div>
       </footer>
+      {twinOn && !pathname.startsWith("/twin") ? <TwinDock /> : null}
     </>
   );
 }

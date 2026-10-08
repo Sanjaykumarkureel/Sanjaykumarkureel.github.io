@@ -26,6 +26,8 @@ jobs:
           node-version: "22"
           cache: npm
       - run: npm ci
+      - name: Omit the twin API from the static export
+        run: rm -rf app/api app/twin
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3
         with:

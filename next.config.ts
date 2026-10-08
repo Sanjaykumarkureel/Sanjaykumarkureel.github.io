@@ -9,12 +9,13 @@ const basePath =
     : "";
 
 const nextConfig: NextConfig = {
-  output: "export",
+  ...(process.env.GITHUB_PAGES === "true" ? { output: "export" as const } : {}),
   images: { unoptimized: true },
   trailingSlash: true,
   basePath,
   env: {
     NEXT_PUBLIC_BASE_PATH: basePath,
+    NEXT_PUBLIC_TWIN_ENABLED: process.env.GITHUB_PAGES === "true" ? "0" : "1",
   },
   turbopack: {
     rules: {
