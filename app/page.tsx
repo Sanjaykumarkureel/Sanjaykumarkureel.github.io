@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Eyebrow } from "@/components/Section";
 import {
+  agentic,
   expertise,
   featuredChapter,
   interests,
@@ -254,9 +255,50 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="border-t border-[var(--line)] bg-[var(--ink-2)]">
+        <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <Eyebrow index="06">{agentic.status}</Eyebrow>
+              <h2 className="mt-4 max-w-2xl font-[family-name:var(--font-display)] text-4xl sm:text-5xl">
+                {agentic.title}.
+              </h2>
+            </div>
+          </div>
+          <p className="mt-6 max-w-2xl text-base leading-relaxed text-[var(--ivory-dim)] sm:text-lg">
+            {agentic.statement}
+          </p>
+          <div className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+            {agentic.tracks.map((track) => (
+              <article
+                key={track.index}
+                className="border border-[var(--line)] bg-[var(--ink)] p-6"
+              >
+                <p className="font-mono text-[11px] tracking-[0.18em] text-[var(--gold)]">
+                  {track.index} / {track.kicker}
+                </p>
+                <h3 className="mt-5 font-[family-name:var(--font-display)] text-2xl leading-tight">
+                  {track.title}
+                </h3>
+                <ul className="mt-5 space-y-2">
+                  {track.items.map((item) => (
+                    <li
+                      key={item}
+                      className="border-l border-[var(--line-strong)] pl-3 text-sm text-[var(--ivory-dim)]"
+                    >
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="border-t border-[var(--line)]">
         <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
-          <Eyebrow index="06">Bench</Eyebrow>
+          <Eyebrow index="07">Bench</Eyebrow>
         <h2 className="mt-4 font-[family-name:var(--font-display)] text-4xl sm:text-5xl">
           Experimental range.
         </h2>

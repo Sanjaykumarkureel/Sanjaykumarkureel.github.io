@@ -93,6 +93,50 @@ export const otherInterests = [
   },
 ] as const;
 
+export const agentic = {
+  title: "Agentic engineering",
+  status: "Currently learning",
+  statement:
+    "Alongside my aging research, I’m learning to build software with AI and develop the engineering skills to turn ideas into working tools. My current learning spans coding, agent workflows, debugging, and product development.",
+  tracks: [
+    {
+      index: "01",
+      kicker: "Approaches",
+      title: "Building with AI",
+      items: ["Vibe coding", "Vibe engineering", "Agentic engineering"],
+    },
+    {
+      index: "02",
+      kicker: "Tools",
+      title: "AI development tools",
+      items: ["Cursor", "Codex", "Antigravity", "Claude Code"],
+    },
+    {
+      index: "03",
+      kicker: "Agent workflows",
+      title: "Connecting and coordinating",
+      items: [
+        "Ralph loops",
+        "Model Context Protocol (MCP)",
+        "Agent skills",
+        "Multi-agent systems",
+        "Swarm orchestration",
+      ],
+    },
+    {
+      index: "04",
+      kicker: "Engineering & products",
+      title: "From idea to product",
+      items: [
+        "Debugging",
+        "Sandboxing",
+        "SaaS platforms",
+        "Commercial MVP development",
+      ],
+    },
+  ],
+} as const;
+
 export const expertise = {
   translational: [
     "Mouse handling, colony maintenance, survival surgery",
