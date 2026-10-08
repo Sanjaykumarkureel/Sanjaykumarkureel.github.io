@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { AttributeMap } from "@/components/AttributeMap";
-import { Portrait } from "@/components/Portrait";
 import { Eyebrow } from "@/components/Section";
 import {
   agentic,
@@ -29,23 +28,16 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="mt-8 flex items-start gap-5 sm:gap-8">
-            <h1 className="min-w-0 max-w-[14ch] font-[family-name:var(--font-display)] text-[clamp(3.2rem,9vw,7.2rem)] leading-[0.86] tracking-[-0.035em] text-[var(--ivory)]">
-              Sanjay
-              <br />
-              Kumar
-              <br />
-              <span className="italic text-[var(--gold)]">Kureel</span>
-              <sup className="ml-3 align-super font-sans text-[0.16em] tracking-[0.28em] text-[var(--ivory-dim)] not-italic">
-                {person.honorific}
-              </sup>
-            </h1>
-            <Portrait
-              priority
-              className="mt-1 h-24 w-20 shrink-0 sm:mt-2 sm:h-32 sm:w-24 lg:h-40 lg:w-32"
-              sizes="128px"
-            />
-          </div>
+          <h1 className="mt-8 max-w-[14ch] font-[family-name:var(--font-display)] text-[clamp(3.4rem,11vw,7.2rem)] leading-[0.86] tracking-[-0.035em] text-[var(--ivory)]">
+            Sanjay
+            <br />
+            Kumar
+            <br />
+            <span className="italic text-[var(--gold)]">Kureel</span>
+            <sup className="ml-3 align-super font-sans text-[0.16em] tracking-[0.28em] text-[var(--ivory-dim)] not-italic">
+              {person.honorific}
+            </sup>
+          </h1>
 
           <div className="mt-10 flex max-w-3xl flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
             <p className="max-w-xl text-lg leading-relaxed text-[var(--ivory-dim)]">
