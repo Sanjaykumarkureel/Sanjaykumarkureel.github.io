@@ -17,6 +17,7 @@ export const person = {
   statement:
     "My research focuses on the cellular and molecular mechanisms underlying aging, cellular senescence, and neurodegeneration. Integrating cell biology, mechanobiology, and translational neuroscience, I study how mechanical and chemical signals shape age-associated neurodegenerative disorders — and identify biological mechanisms with therapeutic potential.",
   cvHref: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/SKK-CV-08112026.pdf`,
+  photo: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/sanjay.jpg`,
   links: {
     linkedin: "https://www.linkedin.com/in/sanjay-k-98a7b1182",
     scholar: "https://scholar.google.com/citations?user=ZfsiIEUAAAAJ&hl=en",

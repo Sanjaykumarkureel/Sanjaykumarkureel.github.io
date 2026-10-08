@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -37,8 +38,14 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
       <header className="sticky top-0 z-50 border-b border-[var(--line)] bg-[rgba(7,7,8,0.78)] backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-8">
           <Link href="/" className="group flex items-center gap-3">
-            <span className="grid h-9 w-9 place-items-center border border-[var(--gold)] text-[11px] font-medium tracking-[0.22em] text-[var(--gold)]">
-              {person.monogram}
+            <span className="relative h-9 w-9 overflow-hidden border border-[var(--gold)]">
+              <Image
+                src={person.photo}
+                alt=""
+                fill
+                sizes="36px"
+                className="object-cover object-[center_18%]"
+              />
             </span>
             <span className="hidden text-[11px] uppercase tracking-[0.28em] text-[var(--ivory-dim)] sm:block">
               {person.shortName}
@@ -132,13 +139,24 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
 
       <footer className="border-t border-[var(--line)]">
         <div className="mx-auto grid max-w-6xl gap-10 px-5 py-12 sm:px-8 md:grid-cols-12">
-          <div className="md:col-span-5">
-            <p className="font-[family-name:var(--font-display)] text-3xl text-[var(--ivory)]">
-              {person.name}
-            </p>
-            <p className="mt-2 text-sm text-[var(--ivory-dim)]">
-              {person.title} · {person.location}
-            </p>
+          <div className="flex gap-4 md:col-span-5">
+            <span className="relative mt-1 h-16 w-16 shrink-0 overflow-hidden border border-[var(--gold)]">
+              <Image
+                src={person.photo}
+                alt={`${person.name}, ${person.honorific}`}
+                fill
+                sizes="64px"
+                className="object-cover object-[center_18%]"
+              />
+            </span>
+            <div>
+              <p className="font-[family-name:var(--font-display)] text-3xl text-[var(--ivory)]">
+                {person.name}
+              </p>
+              <p className="mt-2 text-sm text-[var(--ivory-dim)]">
+                {person.title} · {person.location}
+              </p>
+            </div>
           </div>
           <div className="md:col-span-3">
             <p className="text-[10px] uppercase tracking-[0.28em] text-[var(--mute)]">

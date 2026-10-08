@@ -32,6 +32,7 @@ export const metadata: Metadata = {
     title: `${person.name}, ${person.honorific}`,
     description: `${person.title} — ${person.disciplines.join(" · ")}`,
     type: "profile",
+    images: [{ url: "/sanjay.jpg", alt: `${person.name}, ${person.honorific}` }],
   },
 };
 
