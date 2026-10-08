@@ -4,6 +4,7 @@ import {
   expertise,
   interests,
   person,
+  principles,
   stats,
 } from "@/lib/content";
 
@@ -120,9 +121,36 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="border-t border-[var(--line)]">
+        <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
+          <Eyebrow index="03">Compass</Eyebrow>
+          <h2 className="mt-4 max-w-2xl font-[family-name:var(--font-display)] text-4xl sm:text-5xl">
+            Principles that guide me.
+          </h2>
+          <ol className="mt-12 grid gap-px bg-[var(--line)] lg:grid-cols-3">
+            {principles.map((item) => (
+              <li
+                key={item.index}
+                className="bg-[var(--ink)] px-6 py-10 sm:px-8"
+              >
+                <p className="font-mono text-[11px] tracking-[0.2em] text-[var(--gold)]">
+                  {item.index}
+                </p>
+                <h3 className="mt-6 font-[family-name:var(--font-display)] text-3xl italic leading-tight text-[var(--ivory)] sm:text-4xl">
+                  {item.title}
+                </h3>
+                <p className="mt-4 max-w-xs text-sm leading-relaxed text-[var(--ivory-dim)]">
+                  {item.body}
+                </p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
       <section className="border-t border-[var(--line)] bg-[var(--ink-2)]">
         <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
-          <Eyebrow index="03">Focus</Eyebrow>
+          <Eyebrow index="04">Focus</Eyebrow>
           <h2 className="mt-4 max-w-2xl font-[family-name:var(--font-display)] text-4xl sm:text-5xl">
             Four lines of inquiry.
           </h2>
@@ -148,7 +176,7 @@ export default function Home() {
       </section>
 
       <section className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
-        <Eyebrow index="04">Bench</Eyebrow>
+          <Eyebrow index="05">Bench</Eyebrow>
         <h2 className="mt-4 font-[family-name:var(--font-display)] text-4xl sm:text-5xl">
           Experimental range.
         </h2>

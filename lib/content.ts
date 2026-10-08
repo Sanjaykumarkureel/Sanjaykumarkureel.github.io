@@ -25,6 +25,24 @@ export const person = {
   },
 } as const;
 
+export const principles = [
+  {
+    index: "01",
+    title: "Seek clarity.",
+    body: "Ask better questions. Focus on what matters.",
+  },
+  {
+    index: "02",
+    title: "Stay honest.",
+    body: "Honest self-reflection is the foundation of growth.",
+  },
+  {
+    index: "03",
+    title: "Give it time.",
+    body: "Meaningful work and lasting understanding take patience.",
+  },
+] as const;
+
 export const stats = [
   { value: "12+", label: "Peer-reviewed papers" },
   { value: "02", label: "U.S. patent applications" },
