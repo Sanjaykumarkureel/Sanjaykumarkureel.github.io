@@ -5,12 +5,24 @@ import {
   twinInstructions,
 } from "@/lib/twin";
 
+function corsHeaders() {
+  return {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type",
+  };
+}
+
+export async function OPTIONS() {
+  return new Response(null, { status: 204, headers: corsHeaders() });
+}
+
 export async function POST(request: Request) {
   const key = process.env.OPENAI_API_KEY;
   if (!key) {
     return Response.json(
       { error: "The twin is not configured. Add OPENAI_API_KEY to .env." },
-      { status: 503 },
+      { status: 503, headers: corsHeaders() },
     );
   }
 
@@ -18,7 +30,7 @@ export async function POST(request: Request) {
   try {
     body = await request.json();
   } catch {
-    return Response.json({ error: "Send a JSON body." }, { status: 400 });
+    return Response.json({ error: "Send a JSON body." }, { status: 400, headers: corsHeaders() });
   }
 
   const messages = parseTwinTurns(
@@ -28,7 +40,10 @@ export async function POST(request: Request) {
   );
   const last = messages.at(-1);
   if (!last || last.role !== "user") {
-    return Response.json({ error: "Ask a question about the career." }, { status: 400 });
+    return Response.json(
+      { error: "Ask a question about the career." },
+      { status: 400, headers: corsHeaders() },
+    );
   }
 
   const payload = {
@@ -54,7 +69,7 @@ export async function POST(request: Request) {
   if (!upstream.ok) {
     return Response.json(
       { error: "The twin could not reach the model. Try again in a moment." },
-      { status: 502 },
+      { status: 502, headers: corsHeaders() },
     );
   }
 
@@ -62,9 +77,9 @@ export async function POST(request: Request) {
   if (!reply) {
     return Response.json(
       { error: "The twin returned an empty answer." },
-      { status: 502 },
+      { status: 502, headers: corsHeaders() },
     );
   }
 
-  return Response.json({ reply, model: TWIN_MODEL });
+  return Response.json({ reply, model: TWIN_MODEL }, { headers: corsHeaders() });
 }

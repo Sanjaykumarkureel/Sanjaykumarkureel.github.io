@@ -12,10 +12,14 @@ const nextConfig: NextConfig = {
   ...(process.env.GITHUB_PAGES === "true" ? { output: "export" as const } : {}),
   images: { unoptimized: true },
   trailingSlash: true,
+  outputFileTracingExcludes: {
+    "/*": [".env", ".env*", ".env.local"],
+  },
   basePath,
   env: {
     NEXT_PUBLIC_BASE_PATH: basePath,
-    NEXT_PUBLIC_TWIN_ENABLED: process.env.GITHUB_PAGES === "true" ? "0" : "1",
+    NEXT_PUBLIC_TWIN_ENABLED: "1",
+    NEXT_PUBLIC_TWIN_API: process.env.NEXT_PUBLIC_TWIN_API ?? "",
   },
   turbopack: {
     rules: {

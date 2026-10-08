@@ -95,7 +95,9 @@ function useTwin() {
     setPending(true);
     setError("");
     try {
-      const res = await fetch("/api/twin/", {
+      const endpoint =
+        process.env.NEXT_PUBLIC_TWIN_API?.replace(/\/?$/, "/") || "/api/twin/";
+      const res = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ messages: next }),

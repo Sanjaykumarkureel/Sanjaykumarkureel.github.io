@@ -4,6 +4,8 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  schedule:
+    - cron: "*/40 * * * *"
 
 permissions:
   contents: read
@@ -15,10 +17,39 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  api:
+    runs-on: ubuntu-latest
+    outputs:
+      url: ${{ steps.deploy.outputs.url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - id: deploy
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          set -euo pipefail
+          OUTPUT=$(npx vercel deploy --temporary --yes --force \
+            --env "OPENAI_API_KEY=$OPENAI_API_KEY" \
+            --build-env "OPENAI_API_KEY=$OPENAI_API_KEY")
+          URL=$(printf '%s\n' "$OUTPUT" | grep -oE 'https://[A-Za-z0-9.-]+\.vercel.app' | head -1)
+          if [ -z "$URL" ]; then
+            echo "Vercel deploy did not return a URL"
+            exit 1
+          fi
+          echo "url=$URL" >> "$GITHUB_OUTPUT"
+          echo "Twin API host ready"
+
   build:
+    needs: api
     runs-on: ubuntu-latest
     env:
       GITHUB_PAGES: "true"
+      NEXT_PUBLIC_TWIN_API: ${{ needs.api.outputs.url }}/api/twin/
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -27,7 +58,7 @@ jobs:
           cache: npm
       - run: npm ci
       - name: Omit the twin API from the static export
-        run: rm -rf app/api app/twin
+        run: rm -rf app/api
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3
         with:
