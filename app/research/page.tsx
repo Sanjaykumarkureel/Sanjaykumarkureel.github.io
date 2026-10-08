@@ -25,9 +25,9 @@ export default function ResearchPage() {
             href={person.links.scholar}
             target="_blank"
             rel="noreferrer"
-            className="text-[11px] uppercase tracking-[0.24em] text-[var(--gold)] hover-line"
+            className="border border-[var(--gold)] px-4 py-2 text-[11px] uppercase tracking-[0.24em] text-[var(--gold)] hover:bg-[var(--gold)] hover:text-[var(--ink)]"
           >
-            Google Scholar
+            Google Scholar profile
           </a>
         </div>
         <ol className="divide-y divide-[var(--line)]">

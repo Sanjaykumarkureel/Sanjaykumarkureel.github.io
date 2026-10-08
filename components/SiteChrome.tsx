@@ -70,6 +70,14 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
 
           <div className="flex items-center gap-3">
             <a
+              href={person.links.scholar}
+              target="_blank"
+              rel="noreferrer"
+              className="hidden text-[10px] uppercase tracking-[0.24em] text-[var(--ivory-dim)] hover:text-[var(--gold)] sm:inline-block"
+            >
+              Scholar
+            </a>
+            <a
               href={person.cvHref}
               className="hidden border border-[var(--gold)] px-3 py-1.5 text-[10px] uppercase tracking-[0.24em] text-[var(--gold)] transition-colors hover:bg-[var(--gold)] hover:text-[var(--ink)] sm:inline-block"
             >
@@ -101,6 +109,14 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
                   {item.index} — {item.label}
                 </Link>
               ))}
+              <a
+                href={person.links.scholar}
+                target="_blank"
+                rel="noreferrer"
+                className="text-sm uppercase tracking-[0.22em] text-[var(--ivory)]"
+              >
+                Google Scholar
+              </a>
               <a
                 href={person.cvHref}
                 className="text-sm uppercase tracking-[0.22em] text-[var(--gold)]"

@@ -7,6 +7,7 @@ import {
   otherInterests,
   person,
   principles,
+  scholar,
   stats,
 } from "@/lib/content";
 
@@ -75,6 +76,14 @@ export default function Home() {
               >
                 Portfolio
               </Link>
+              <a
+                href={scholar.href}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center border border-[var(--line-strong)] px-5 py-2.5 text-[11px] uppercase tracking-[0.24em] text-[var(--ivory)] hover:border-[var(--gold)] hover:text-[var(--gold)]"
+              >
+                Google Scholar
+              </a>
             </div>
           </div>
         </div>
@@ -119,6 +128,26 @@ export default function Home() {
                 </div>
               ))}
             </div>
+            <a
+              href={scholar.href}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-px grid grid-cols-3 gap-px bg-[var(--line)] transition-colors hover:bg-[var(--gold)]"
+            >
+              {scholar.metrics.map((m) => (
+                <div key={m.label} className="bg-[var(--ink-2)] px-4 py-5">
+                  <p className="font-[family-name:var(--font-display)] text-3xl text-[var(--ivory)]">
+                    {m.value}
+                  </p>
+                  <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-[var(--mute)]">
+                    {m.label}
+                  </p>
+                </div>
+              ))}
+            </a>
+            <p className="mt-3 text-[10px] uppercase tracking-[0.22em] text-[var(--mute)]">
+              Google Scholar →
+            </p>
           </div>
         </div>
       </section>

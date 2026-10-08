@@ -25,6 +25,15 @@ export const person = {
   },
 } as const;
 
+export const scholar = {
+  href: "https://scholar.google.com/citations?user=ZfsiIEUAAAAJ&hl=en",
+  metrics: [
+    { value: "195", label: "Citations" },
+    { value: "07", label: "h-index" },
+    { value: "06", label: "i10-index" },
+  ],
+} as const;
+
 export const principles = [
   {
     index: "01",
