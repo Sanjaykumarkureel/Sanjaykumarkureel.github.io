@@ -57,7 +57,7 @@ export const interests = [
   },
   {
     title: "Mechanobiology",
-    body: "How force, substrate stiffness, and mechanical memory regulate stem cell fate, rejuvenation, and hippocampal function.",
+    body: "How force and substrate stiffness regulate stem cell fate, tissue architecture, and hippocampal function.",
   },
   {
     title: "Translational neuroscience",
@@ -66,6 +66,21 @@ export const interests = [
   {
     title: "Tissue rejuvenation",
     body: "Methods to rejuvenate senescent cells and regenerate tissues — from low-frequency ultrasound to nuclear YAP1 enrichment.",
+  },
+  {
+    title: "Biology of history",
+    body: "How cells remember past events — mechanical memory as a biological history written into living material.",
+  },
+] as const;
+
+export const otherInterests = [
+  {
+    title: "Human behaviour & psychology",
+    body: "Understanding human and social behaviour, and the psychology that shapes how people adapt, decide, and relate.",
+  },
+  {
+    title: "Writing for thinking",
+    body: "Writing as a method: to test ideas, find the question, and make complex work legible.",
   },
 ] as const;
 

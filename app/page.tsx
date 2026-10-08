@@ -3,6 +3,7 @@ import { Eyebrow } from "@/components/Section";
 import {
   expertise,
   interests,
+  otherInterests,
   person,
   principles,
   stats,
@@ -152,21 +153,23 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
           <Eyebrow index="04">Focus</Eyebrow>
           <h2 className="mt-4 max-w-2xl font-[family-name:var(--font-display)] text-4xl sm:text-5xl">
-            Four lines of inquiry.
+            Five lines of inquiry.
           </h2>
           <div className="mt-12 grid gap-4 md:grid-cols-2">
             {interests.map((item, i) => (
               <article
                 key={item.title}
-                className="card-shine border border-[var(--line)] bg-[var(--ink)] p-7 transition-colors hover:border-[var(--gold)]"
+                className={`card-shine border border-[var(--line)] bg-[var(--ink)] p-7 transition-colors hover:border-[var(--gold)] ${
+                  i === interests.length - 1 ? "md:col-span-2" : ""
+                }`}
               >
                 <p className="font-mono text-[11px] text-[var(--gold)]">
-                  0{i + 1}
+                  {String(i + 1).padStart(2, "0")}
                 </p>
                 <h3 className="mt-4 font-[family-name:var(--font-display)] text-2xl">
                   {item.title}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-[var(--ivory-dim)]">
+                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[var(--ivory-dim)]">
                   {item.body}
                 </p>
               </article>
@@ -176,7 +179,30 @@ export default function Home() {
       </section>
 
       <section className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
-          <Eyebrow index="05">Bench</Eyebrow>
+        <Eyebrow index="05">Beside the bench</Eyebrow>
+        <h2 className="mt-4 max-w-2xl font-[family-name:var(--font-display)] text-4xl sm:text-5xl">
+          Other interests.
+        </h2>
+        <div className="mt-12 grid gap-px bg-[var(--line)] md:grid-cols-2">
+          {otherInterests.map((item, i) => (
+            <article key={item.title} className="bg-[var(--ink)] px-6 py-10 sm:px-8">
+              <p className="font-mono text-[11px] tracking-[0.2em] text-[var(--gold)]">
+                {String(i + 1).padStart(2, "0")}
+              </p>
+              <h3 className="mt-5 font-[family-name:var(--font-display)] text-3xl italic leading-tight">
+                {item.title}
+              </h3>
+              <p className="mt-4 max-w-md text-sm leading-relaxed text-[var(--ivory-dim)]">
+                {item.body}
+              </p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="border-t border-[var(--line)]">
+        <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
+          <Eyebrow index="06">Bench</Eyebrow>
         <h2 className="mt-4 font-[family-name:var(--font-display)] text-4xl sm:text-5xl">
           Experimental range.
         </h2>
@@ -201,6 +227,7 @@ export default function Home() {
               </ul>
             </div>
           ))}
+        </div>
         </div>
       </section>
 
