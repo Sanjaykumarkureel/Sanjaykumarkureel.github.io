@@ -92,13 +92,25 @@ export default function ResearchPage() {
             <ul className="mt-8 space-y-8">
               {chapters.map((c) => (
                 <li key={c.title}>
-                  <p className="font-mono text-[11px] text-[var(--gold)]">{c.year}</p>
+                  <p className="font-mono text-[11px] text-[var(--gold)]">
+                    {c.extra || c.year}
+                  </p>
                   <p className="mt-2 font-[family-name:var(--font-display)] text-2xl leading-snug">
                     {c.title}
                   </p>
                   <p className="mt-2 text-sm text-[var(--ivory-dim)]">
                     {c.authors} · {c.venue}
                   </p>
+                  {c.href ? (
+                    <a
+                      href={c.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="mt-3 inline-block text-[11px] uppercase tracking-[0.2em] text-[var(--gold)] hover-line"
+                    >
+                      Read the chapter
+                    </a>
+                  ) : null}
                 </li>
               ))}
             </ul>

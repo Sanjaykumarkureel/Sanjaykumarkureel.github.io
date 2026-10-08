@@ -335,20 +335,26 @@ export const publications = [
 
 export const chapters = [
   {
-    authors: "Has, C., Kureel, S.K.",
-    title: "Adsorption equilibrium.",
-    venue: "Adsorption Dynamics: From Technologies to Environmental Solutions. Cambridge Scholars Publishing",
-    year: "2026",
-  },
-  {
     authors: "Kureel, S.K., Namita.",
     title:
       "Linking Mechanical Memory to Traumatic Brain Injury (TBI)-Induced Persistent Hippocampus Dysfunction.",
     venue:
-      "The Hippocampus — Architecture, Cognition, Plasticity and Dysfunction. IntechOpen (accepted)",
+      "The Hippocampus — Architecture, Cognition, Plasticity and Dysfunction. IntechOpen",
     year: "2026",
+    extra: "Published 28 September 2026",
+    href: "https://www.intechopen.com/online-first/1257339",
+  },
+  {
+    authors: "Has, C., Kureel, S.K.",
+    title: "Adsorption equilibrium.",
+    venue: "Adsorption Dynamics: From Technologies to Environmental Solutions. Cambridge Scholars Publishing",
+    year: "2026",
+    extra: "",
+    href: "",
   },
 ] as const;
+
+export const featuredChapter = chapters[0];
 
 export const patents = [
   {
@@ -367,6 +373,16 @@ export const portfolio = [
   {
     status: "Published",
     index: "01",
+    title: "Mechanical memory after TBI",
+    field: "IntechOpen · Book chapter · 2026",
+    blurb:
+      "How cells remember past mechanical events — and why that memory may explain persistent hippocampal dysfunction after traumatic brain injury.",
+    href: "https://www.intechopen.com/online-first/1257339",
+    cta: "Read the chapter",
+  },
+  {
+    status: "Published",
+    index: "02",
     title: "Low-frequency ultrasound rejuvenation",
     field: "Aging Cell · 2025",
     blurb:
@@ -376,7 +392,7 @@ export const portfolio = [
   },
   {
     status: "Published",
-    index: "02",
+    index: "03",
     title: "Cellular mechanical memory",
     field: "Stem Cell Research & Therapy · 2025",
     blurb:
@@ -386,7 +402,7 @@ export const portfolio = [
   },
   {
     status: "Published",
-    index: "03",
+    index: "04",
     title: "Ferroptosis as a senolytic axis",
     field: "Aging and Disease · 2025",
     blurb:
@@ -396,7 +412,7 @@ export const portfolio = [
   },
   {
     status: "Reserved",
-    index: "04",
+    index: "05",
     title: "Selected visual studies",
     field: "Figures · protocols · talks",
     blurb:
@@ -406,7 +422,7 @@ export const portfolio = [
   },
   {
     status: "Reserved",
-    index: "05",
+    index: "06",
     title: "Open tools",
     field: "Methods · analysis",
     blurb:
@@ -416,7 +432,7 @@ export const portfolio = [
   },
   {
     status: "Reserved",
-    index: "06",
+    index: "07",
     title: "Collaborative briefs",
     field: "Industry · academia",
     blurb:

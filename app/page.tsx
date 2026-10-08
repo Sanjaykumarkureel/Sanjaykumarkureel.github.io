@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Eyebrow } from "@/components/Section";
 import {
   expertise,
+  featuredChapter,
   interests,
   otherInterests,
   person,
@@ -118,6 +119,30 @@ export default function Home() {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t border-[var(--line)]">
+        <div className="mx-auto max-w-6xl px-5 py-12 sm:px-8">
+          <div className="flex flex-col gap-6 border border-[var(--gold)] bg-[var(--ink-2)] p-7 sm:flex-row sm:items-end sm:justify-between">
+            <div className="max-w-2xl">
+              <Eyebrow>Recently published</Eyebrow>
+              <p className="mt-4 text-[11px] uppercase tracking-[0.22em] text-[var(--mute)]">
+                Book chapter · IntechOpen · {featuredChapter.year}
+              </p>
+              <h2 className="mt-3 font-[family-name:var(--font-display)] text-3xl leading-tight sm:text-4xl">
+                {featuredChapter.title.replace(/\.$/, "")}
+              </h2>
+            </div>
+            <a
+              href={featuredChapter.href}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex shrink-0 items-center justify-center border border-[var(--gold)] px-5 py-2.5 text-[11px] uppercase tracking-[0.24em] text-[var(--gold)] hover:bg-[var(--gold)] hover:text-[var(--ink)]"
+            >
+              Read the chapter
+            </a>
           </div>
         </div>
       </section>
