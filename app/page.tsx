@@ -21,16 +21,16 @@ export default function Home() {
         <div className="site-grid pointer-events-none absolute inset-0" />
         <div className="pointer-events-none absolute -right-24 top-10 h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle,rgba(201,165,106,0.18),transparent_62%)]" />
         <div className="pointer-events-none absolute -left-20 bottom-0 h-72 w-72 rounded-full bg-[radial-gradient(circle,rgba(216,90,58,0.14),transparent_65%)]" />
-        <div className="relative mx-auto grid max-w-6xl items-end gap-12 px-5 pb-16 pt-10 sm:px-8 sm:pt-20 lg:grid-cols-12">
-          <div className="lg:col-span-7">
-            <div className="flex items-center justify-between gap-4">
-              <Eyebrow index="01">Independent research</Eyebrow>
-              <p className="hidden text-[10px] uppercase tracking-[0.28em] text-[var(--mute)] sm:block">
-                {person.location}
-              </p>
-            </div>
+        <div className="relative mx-auto max-w-6xl px-5 pb-16 pt-10 sm:px-8 sm:pt-20">
+          <div className="flex items-center justify-between gap-4">
+            <Eyebrow index="01">Independent research</Eyebrow>
+            <p className="text-[10px] uppercase tracking-[0.28em] text-[var(--mute)]">
+              {person.location}
+            </p>
+          </div>
 
-            <h1 className="mt-8 max-w-[14ch] font-[family-name:var(--font-display)] text-[clamp(3.4rem,11vw,7.2rem)] leading-[0.86] tracking-[-0.035em] text-[var(--ivory)]">
+          <div className="mt-8 flex items-start gap-5 sm:gap-8">
+            <h1 className="min-w-0 max-w-[14ch] font-[family-name:var(--font-display)] text-[clamp(3.2rem,9vw,7.2rem)] leading-[0.86] tracking-[-0.035em] text-[var(--ivory)]">
               Sanjay
               <br />
               Kumar
@@ -40,48 +40,43 @@ export default function Home() {
                 {person.honorific}
               </sup>
             </h1>
-
-            <div className="mt-10 flex max-w-3xl flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-              <p className="max-w-xl text-lg leading-relaxed text-[var(--ivory-dim)]">
-                {person.title}. Working at the intersection of{" "}
-                <span className="text-[var(--ivory)]">
-                  {person.disciplines.join(" · ")}
-                </span>
-                .
-              </p>
-            </div>
-            <div className="mt-8 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
-              <Link
-                href="/career"
-                className="inline-flex items-center justify-center border border-[var(--gold)] bg-[var(--gold)] px-5 py-2.5 text-[11px] uppercase tracking-[0.24em] text-[var(--ink)] transition-opacity hover:opacity-90"
-              >
-                Career journey
-              </Link>
-              <Link
-                href="/portfolio"
-                className="inline-flex items-center justify-center border border-[var(--line-strong)] px-5 py-2.5 text-[11px] uppercase tracking-[0.24em] text-[var(--ivory)] hover:border-[var(--gold)] hover:text-[var(--gold)]"
-              >
-                Portfolio
-              </Link>
-              <a
-                href={scholar.href}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center justify-center border border-[var(--line-strong)] px-5 py-2.5 text-[11px] uppercase tracking-[0.24em] text-[var(--ivory)] hover:border-[var(--gold)] hover:text-[var(--gold)]"
-              >
-                Google Scholar
-              </a>
-            </div>
-          </div>
-
-          <div className="lg:col-span-5">
             <Portrait
               priority
-              className="mx-auto aspect-[4/5] w-full max-w-[420px] lg:ml-auto"
+              className="mt-1 h-24 w-20 shrink-0 sm:mt-2 sm:h-32 sm:w-24 lg:h-40 lg:w-32"
+              sizes="128px"
             />
-            <p className="mt-3 text-right font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--mute)]">
-              {person.shortName} · {person.honorific}
+          </div>
+
+          <div className="mt-10 flex max-w-3xl flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+            <p className="max-w-xl text-lg leading-relaxed text-[var(--ivory-dim)]">
+              {person.title}. Working at the intersection of{" "}
+              <span className="text-[var(--ivory)]">
+                {person.disciplines.join(" · ")}
+              </span>
+              .
             </p>
+          </div>
+          <div className="mt-8 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+            <Link
+              href="/career"
+              className="inline-flex items-center justify-center border border-[var(--gold)] bg-[var(--gold)] px-5 py-2.5 text-[11px] uppercase tracking-[0.24em] text-[var(--ink)] transition-opacity hover:opacity-90"
+            >
+              Career journey
+            </Link>
+            <Link
+              href="/portfolio"
+              className="inline-flex items-center justify-center border border-[var(--line-strong)] px-5 py-2.5 text-[11px] uppercase tracking-[0.24em] text-[var(--ivory)] hover:border-[var(--gold)] hover:text-[var(--gold)]"
+            >
+              Portfolio
+            </Link>
+            <a
+              href={scholar.href}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center justify-center border border-[var(--line-strong)] px-5 py-2.5 text-[11px] uppercase tracking-[0.24em] text-[var(--ivory)] hover:border-[var(--gold)] hover:text-[var(--gold)]"
+            >
+              Google Scholar
+            </a>
           </div>
         </div>
 

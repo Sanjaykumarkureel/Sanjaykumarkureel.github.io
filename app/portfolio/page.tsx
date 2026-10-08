@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Portrait } from "@/components/Portrait";
 import { Eyebrow } from "@/components/Section";
 import { person, portfolio } from "@/lib/content";
 
@@ -10,22 +9,17 @@ export const metadata: Metadata = {
 export default function PortfolioPage() {
   return (
     <div>
-      <header className="mx-auto grid max-w-6xl items-end gap-10 px-5 pb-16 pt-16 sm:px-8 sm:pt-24 lg:grid-cols-12">
-        <div className="lg:col-span-8">
-          <Eyebrow index="04">Selected work</Eyebrow>
-          <h1 className="mt-5 max-w-4xl font-[family-name:var(--font-display)] text-5xl leading-[0.95] tracking-tight text-[var(--ivory)] sm:text-7xl">
-            A studio for studies still taking form.
-          </h1>
-          <p className="mt-6 max-w-2xl text-base leading-relaxed text-[var(--ivory-dim)] sm:text-lg">
-            Featured investigations sit here now. Visual studies, methods, and
-            collaborative briefs will occupy the reserved slots as they become
-            public.
-          </p>
-          <div className="gold-rule mt-10 max-w-xs" />
-        </div>
-        <div className="lg:col-span-4">
-          <Portrait className="mx-auto aspect-[4/5] w-full max-w-xs lg:ml-auto lg:max-w-none" sizes="320px" />
-        </div>
+      <header className="mx-auto max-w-6xl px-5 pb-16 pt-16 sm:px-8 sm:pt-24">
+        <Eyebrow index="04">Selected work</Eyebrow>
+        <h1 className="mt-5 max-w-4xl font-[family-name:var(--font-display)] text-5xl leading-[0.95] tracking-tight text-[var(--ivory)] sm:text-7xl">
+          A studio for studies still taking form.
+        </h1>
+        <p className="mt-6 max-w-2xl text-base leading-relaxed text-[var(--ivory-dim)] sm:text-lg">
+          Featured investigations sit here now. Visual studies, methods, and
+          collaborative briefs will occupy the reserved slots as they become
+          public.
+        </p>
+        <div className="gold-rule mt-10 max-w-xs" />
       </header>
 
       <section className="mx-auto max-w-6xl px-5 pb-24 sm:px-8">
