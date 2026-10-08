@@ -334,10 +334,10 @@ export default function Home() {
               Next
             </p>
             <p className="mt-2 font-[family-name:var(--font-display)] text-3xl">
-              Walk the trajectory — then the record.
+              Walk the trajectory — then the notebook.
             </p>
           </div>
-          <div className="flex gap-3">
+          <div className="flex flex-wrap gap-3">
             <Link
               href="/career"
               className="border border-[var(--gold)] px-5 py-2.5 text-[11px] uppercase tracking-[0.24em] text-[var(--gold)] hover:bg-[var(--gold)] hover:text-[var(--ink)]"
@@ -349,6 +349,12 @@ export default function Home() {
               className="border border-[var(--line-strong)] px-5 py-2.5 text-[11px] uppercase tracking-[0.24em] hover:border-[var(--ivory)]"
             >
               Research
+            </Link>
+            <Link
+              href="/blog"
+              className="border border-[var(--line-strong)] px-5 py-2.5 text-[11px] uppercase tracking-[0.24em] hover:border-[var(--ivory)]"
+            >
+              Blog
             </Link>
           </div>
         </div>

@@ -500,4 +500,5 @@ export const nav = [
   { href: "/career", label: "Career", index: "02" },
   { href: "/research", label: "Research", index: "03" },
   { href: "/portfolio", label: "Portfolio", index: "04" },
+  { href: "/blog", label: "Blog", index: "05" },
 ] as const;
