@@ -1,0 +1,8 @@
+.env
+.env*
+.DS_Store
+node_modules
+.next
+.git
+AGENTS.md
+SKK-CV-08112026.pdf
