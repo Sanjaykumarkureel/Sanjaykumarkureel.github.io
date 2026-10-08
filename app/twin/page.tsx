@@ -22,7 +22,7 @@ export default function TwinPage() {
         </p>
         <div className="gold-rule mt-10 max-w-xs" />
       </header>
-      <section className="min-h-[28rem] border border-[var(--line)] bg-[var(--ink-2)] p-6 sm:p-8 lg:col-span-8">
+      <section className="min-h-[32rem] overflow-hidden rounded-[1.75rem] border border-[rgba(201,165,106,0.28)] bg-[rgba(16,17,20,0.72)] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.35)] backdrop-blur-xl sm:p-7 lg:col-span-8">
         <TwinPanel />
       </section>
     </div>

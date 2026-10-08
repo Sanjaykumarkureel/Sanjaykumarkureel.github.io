@@ -162,9 +162,63 @@ a {
   transform-origin: left;
 }
 
+.twin-fab {
+  box-shadow:
+    0 0 0 1px rgba(201, 165, 106, 0.4),
+    0 14px 36px rgba(0, 0, 0, 0.45),
+    0 0 36px rgba(201, 165, 106, 0.22);
+}
+
+.twin-panel {
+  animation: twin-rise 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.twin-dots span {
+  display: block;
+  width: 5px;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--gold);
+  animation: twin-bounce 1.05s infinite;
+}
+
+.twin-dots span:nth-child(2) {
+  animation-delay: 0.14s;
+}
+
+.twin-dots span:nth-child(3) {
+  animation-delay: 0.28s;
+}
+
+@keyframes twin-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes twin-bounce {
+  0%,
+  80%,
+  100% {
+    opacity: 0.28;
+    transform: translateY(0);
+  }
+  40% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal,
-  .marquee-track {
+  .marquee-track,
+  .twin-panel,
+  .twin-dots span {
     animation: none;
     opacity: 1;
     transform: none;
