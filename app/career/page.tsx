@@ -29,7 +29,7 @@ export default function CareerPage() {
         <div className="grid gap-16 lg:grid-cols-12">
           <div className="lg:col-span-8">
             <ol className="relative border-l border-[var(--line-strong)] pl-8">
-              {career.map((item, i) => (
+              {career.map((item) => (
                 <li key={item.period} className="relative pb-12 last:pb-0">
                   <span className="absolute -left-[37px] top-1.5 h-2.5 w-2.5 rounded-full bg-[var(--gold)]" />
                   <p className="font-mono text-[11px] tracking-[0.14em] text-[var(--gold)]">
@@ -44,7 +44,7 @@ export default function CareerPage() {
                   <p className="mt-3 max-w-xl text-sm leading-relaxed text-[var(--mute)]">
                     {item.detail}
                   </p>
-                  {i === 0 ? (
+                  {"current" in item && item.current ? (
                     <p className="mt-4 inline-block border border-[var(--ember)] px-2 py-0.5 text-[10px] uppercase tracking-[0.2em] text-[var(--ember)]">
                       Current
                     </p>

@@ -58,7 +58,7 @@ export default function ResearchPage() {
           {publications.map((p, i) => (
             <li key={p.title} className="grid gap-4 py-8 md:grid-cols-12">
               <p className="font-mono text-sm text-[var(--gold)] md:col-span-1">
-                {String(i + 4).padStart(2, "0")}
+                {String(i + manuscripts.length + 1).padStart(2, "0")}
               </p>
               <div className="md:col-span-8">
                 <p className="text-sm text-[var(--mute)]">{p.authors}</p>

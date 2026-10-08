@@ -19,7 +19,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GITHUB_PAGES: "true"
-      NEXT_PUBLIC_TWIN_API: "https://site-liart-three-18.vercel.app/api/twin/"
+      NEXT_PUBLIC_TWIN_API: ${{ vars.TWIN_API_URL }}
+      NEXT_PUBLIC_SITE_URL: ${{ vars.SITE_URL }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -27,6 +28,9 @@ jobs:
           node-version: "22"
           cache: npm
       - run: npm ci
+      - run: npm run lint
+      - run: npx tsc --noEmit
+      # Static export cannot contain route handlers; the twin API is deployed to Vercel instead.
       - name: Omit the twin API from the static export
         run: rm -rf app/api
       - run: npm run build

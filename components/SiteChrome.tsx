@@ -7,16 +7,18 @@ import { useEffect, useState } from "react";
 import { TwinDock } from "@/components/TwinChat";
 import { nav, person } from "@/lib/content";
 
+function trimSlash(path: string) {
+  return path.length > 1 ? path.replace(/\/+$/, "") : path;
+}
+
 export function SiteChrome({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const [open, setOpen] = useState(false);
+  const [menuOpenedOn, setMenuOpenedOn] = useState<string | null>(null);
+  const open = menuOpenedOn === pathname;
   const [progress, setProgress] = useState(0);
   const twinOn = process.env.NEXT_PUBLIC_TWIN_ENABLED !== "0";
   const links = twinOn ? nav : nav.filter((item) => item.href !== "/twin/");
-
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
+  const current = trimSlash(pathname);
 
   useEffect(() => {
     const onScroll = () => {
@@ -31,6 +33,12 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
 
   return (
     <>
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-[var(--gold)] focus:px-4 focus:py-2 focus:text-[11px] focus:tracking-[0.2em] focus:text-[var(--ink)] focus:uppercase"
+      >
+        Skip to content
+      </a>
       <div className="grain" aria-hidden />
       <div
         className="progress-bar"
@@ -57,10 +65,11 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
 
           <nav className="hidden items-center gap-6 lg:flex">
             {links.map((item) => {
+              const target = trimSlash(item.href);
               const active =
-                item.href === "/"
-                  ? pathname === "/"
-                  : pathname.startsWith(item.href);
+                target === "/"
+                  ? current === "/"
+                  : current === target || current.startsWith(`${target}/`);
               return (
                 <Link
                   key={item.href}
@@ -96,8 +105,10 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
             <button
               type="button"
               className="grid h-9 w-9 place-items-center border border-[var(--line-strong)] lg:hidden"
-              onClick={() => setOpen((v) => !v)}
+              onClick={() => setMenuOpenedOn(open ? null : pathname)}
               aria-label="Toggle menu"
+              aria-expanded={open}
+              aria-controls="site-menu"
             >
               <span className="flex w-4 flex-col gap-1">
                 <span className="block h-px bg-[var(--ivory)]" />
@@ -108,7 +119,7 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
         </div>
 
         {open ? (
-          <div className="border-t border-[var(--line)] bg-[var(--ink)] px-5 py-6 lg:hidden">
+          <div id="site-menu" className="border-t border-[var(--line)] bg-[var(--ink)] px-5 py-6 lg:hidden">
             <div className="flex flex-col gap-4">
               {links.map((item) => (
                 <Link
@@ -146,7 +157,9 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
         ) : null}
       </header>
 
-      <main className="relative flex-1">{children}</main>
+      <main id="main" tabIndex={-1} className="relative flex-1 outline-none">
+        {children}
+      </main>
 
       <footer className="border-t border-[var(--line)]">
         <div className="mx-auto grid max-w-6xl gap-10 px-5 py-12 sm:px-8 md:grid-cols-12">

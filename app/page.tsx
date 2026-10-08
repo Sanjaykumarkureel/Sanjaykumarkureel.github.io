@@ -50,13 +50,13 @@ export default function Home() {
           </div>
           <div className="mt-8 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
             <Link
-              href="/career"
+              href="/career/"
               className="inline-flex items-center justify-center border border-[var(--gold)] bg-[var(--gold)] px-5 py-2.5 text-[11px] uppercase tracking-[0.24em] text-[var(--ink)] transition-opacity hover:opacity-90"
             >
               Career journey
             </Link>
             <Link
-              href="/portfolio"
+              href="/portfolio/"
               className="inline-flex items-center justify-center border border-[var(--line-strong)] px-5 py-2.5 text-[11px] uppercase tracking-[0.24em] text-[var(--ivory)] hover:border-[var(--gold)] hover:text-[var(--gold)]"
             >
               Portfolio
@@ -147,7 +147,7 @@ export default function Home() {
               ))}
             </a>
             <p className="mt-3 text-[10px] uppercase tracking-[0.22em] text-[var(--mute)]">
-              Google Scholar →
+              Google Scholar · as of {scholar.asOf} →
             </p>
           </div>
         </div>
@@ -339,13 +339,13 @@ export default function Home() {
           </div>
           <div className="flex flex-wrap gap-3">
             <Link
-              href="/career"
+              href="/career/"
               className="border border-[var(--gold)] px-5 py-2.5 text-[11px] uppercase tracking-[0.24em] text-[var(--gold)] hover:bg-[var(--gold)] hover:text-[var(--ink)]"
             >
               Career
             </Link>
             <Link
-              href="/research"
+              href="/research/"
               className="border border-[var(--line-strong)] px-5 py-2.5 text-[11px] uppercase tracking-[0.24em] hover:border-[var(--ivory)]"
             >
               Research

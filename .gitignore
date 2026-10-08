@@ -36,6 +36,10 @@ yarn-error.log*
 # vercel
 .vercel
 
+# source copies; the published versions live in public/
+/SKK-CV-08112026.pdf
+/Sanjay02.jpg
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

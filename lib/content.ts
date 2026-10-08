@@ -28,6 +28,7 @@ export const person = {
 
 export const scholar = {
   href: "https://scholar.google.com/citations?user=ZfsiIEUAAAAJ&hl=en",
+  asOf: "October 2026",
   metrics: [
     { value: "195", label: "Citations" },
     { value: "07", label: "h-index" },
@@ -169,6 +170,7 @@ export const career = [
     org: "United States",
     detail:
       "Preparing review articles and research proposals on cellular senescence and neurodegeneration.",
+    current: true,
   },
   {
     period: "Feb 2025 — Jul 2026",
@@ -322,7 +324,7 @@ export const publications = [
     venue: "Aging and Disease",
     year: "2025",
     extra: "",
-    href: "https://www.aginganddisease.org/",
+    href: "https://doi.org/10.14336/AD.2025.0141",
   },
   {
     authors: "Has, C., Kureel, S.K.",
@@ -461,8 +463,8 @@ export const portfolio = [
     field: "Aging and Disease · 2025",
     blurb:
       "Mechanisms and therapeutic potential of targeting ferroptosis to eliminate senescent cells.",
-    href: "https://www.aginganddisease.org/",
-    cta: "Journal",
+    href: "https://doi.org/10.14336/AD.2025.0141",
+    cta: "Read the paper",
   },
   {
     status: "Reserved",
@@ -498,9 +500,9 @@ export const portfolio = [
 
 export const nav = [
   { href: "/", label: "Me", index: "01" },
-  { href: "/career", label: "Career", index: "02" },
-  { href: "/research", label: "Research", index: "03" },
-  { href: "/portfolio", label: "Portfolio", index: "04" },
+  { href: "/career/", label: "Career", index: "02" },
+  { href: "/research/", label: "Research", index: "03" },
+  { href: "/portfolio/", label: "Portfolio", index: "04" },
   { href: "/blog/", label: "Blog", index: "05" },
   { href: "/twin/", label: "Twin", index: "06" },
 ] as const;

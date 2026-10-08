@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 
-type Node = {
+type MapNode = {
   id: string;
   label: string;
   detail: string;
@@ -12,7 +12,7 @@ type Node = {
   group: string;
 };
 
-const NODES: Node[] = [
+const NODES: MapNode[] = [
   { id: "cb", label: "Cell biology", detail: "Cellular and molecular mechanisms as the home ground of the work.", ring: 1, slot: 0, count: 4, group: "Discipline" },
   { id: "ag", label: "Aging", detail: "How time is written into cells — senescence, decline, and the chance of repair.", ring: 1, slot: 1, count: 4, group: "Discipline" },
   { id: "mb", label: "Mechanobiology", detail: "Force, stiffness, and traction as signals that steer fate and function.", ring: 1, slot: 2, count: 4, group: "Discipline" },
@@ -40,23 +40,46 @@ const CY = 360;
 export function AttributeMap() {
   const [t, setT] = useState(0);
   const [active, setActive] = useState("hist");
-  const [paused, setPaused] = useState(false);
-  const reduce = useRef(false);
+  const [hovered, setHovered] = useState(false);
+  const [focused, setFocused] = useState(false);
+  const [visible, setVisible] = useState(false);
+  const [reduced, setReduced] = useState(false);
+  const frame = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    reduce.current = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce.current) return;
-    let frame = 0;
+    const query = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const sync = () => setReduced(query.matches);
+    query.addEventListener("change", sync);
+    const raf = requestAnimationFrame(sync);
+    return () => {
+      cancelAnimationFrame(raf);
+      query.removeEventListener("change", sync);
+    };
+  }, []);
+
+  useEffect(() => {
+    const el = frame.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(([entry]) => setVisible(entry.isIntersecting));
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  const running = visible && !hovered && !focused && !reduced;
+
+  useEffect(() => {
+    if (!running) return;
+    let raf = 0;
     let last = performance.now();
     const loop = (now: number) => {
       const dt = Math.min(0.05, (now - last) / 1000);
       last = now;
-      if (!paused) setT((v) => v + dt);
-      frame = requestAnimationFrame(loop);
+      setT((v) => v + dt);
+      raf = requestAnimationFrame(loop);
     };
-    frame = requestAnimationFrame(loop);
-    return () => cancelAnimationFrame(frame);
-  }, [paused]);
+    raf = requestAnimationFrame(loop);
+    return () => cancelAnimationFrame(raf);
+  }, [running]);
 
   const positions = useMemo(() => {
     return NODES.map((node) => {
@@ -75,14 +98,18 @@ export function AttributeMap() {
 
   return (
     <div className="grid items-center gap-10 lg:grid-cols-12">
-      <div className="lg:col-span-8">
+      <div ref={frame} className="lg:col-span-8">
         <svg
           viewBox="0 0 720 720"
           className="mx-auto w-full max-w-[720px]"
-          role="img"
+          role="group"
           aria-label="Dynamic map of research, principles, and practice"
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
+          onFocus={() => setFocused(true)}
+          onBlur={(e) => {
+            if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setFocused(false);
+          }}
         >
           <defs>
             <radialGradient id="nucleus" cx="50%" cy="50%" r="50%">
@@ -173,8 +200,15 @@ export function AttributeMap() {
                   onMouseEnter={() => setActive(n.id)}
                   onClick={() => setActive(n.id)}
                   onFocus={() => setActive(n.id)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      setActive(n.id);
+                    }
+                  }}
                   tabIndex={0}
                   role="button"
+                  aria-pressed={on}
                   aria-label={`${n.group}: ${n.label}`}
                 />
                 <text
@@ -186,6 +220,7 @@ export function AttributeMap() {
                   fontFamily="ui-sans-serif, system-ui"
                   className="pointer-events-none"
                   style={{ fontWeight: on ? 500 : 400 }}
+                  aria-hidden
                 >
                   {n.label}
                 </text>
@@ -195,7 +230,7 @@ export function AttributeMap() {
         </svg>
       </div>
 
-      <div className="lg:col-span-4">
+      <div className="lg:col-span-4" aria-live="polite">
         <p className="text-[10px] uppercase tracking-[0.28em] text-[var(--gold)]">
           {current.group}
         </p>
@@ -206,7 +241,7 @@ export function AttributeMap() {
           {current.detail}
         </p>
         <p className="mt-8 text-[10px] uppercase tracking-[0.22em] text-[var(--mute)]">
-          Hover a node · motion pauses on contact
+          Hover or tab to a node · motion pauses on contact
         </p>
         <div className="mt-6 flex flex-wrap gap-2">
           {["Discipline", "Inquiry", "Compass", "Person", "Learning", "Voice", "Record"].map(

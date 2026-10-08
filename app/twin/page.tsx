@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { TwinPanel } from "@/components/TwinChat";
 import { Eyebrow } from "@/components/Section";
 import { person } from "@/lib/content";
@@ -22,8 +23,28 @@ export default function TwinPage() {
         </p>
         <div className="gold-rule mt-10 max-w-xs" />
       </header>
-      <section className="min-h-[32rem] overflow-hidden rounded-[1.75rem] border border-[rgba(201,165,106,0.28)] bg-[rgba(16,17,20,0.72)] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.35)] backdrop-blur-xl sm:p-7 lg:col-span-8">
-        <TwinPanel />
+      <section className="twin-glass flex h-[min(40rem,calc(100dvh-7rem))] min-h-[28rem] flex-col overflow-hidden rounded-[1.75rem] p-4 pt-4 lg:col-span-8">
+        <div className="mb-4 flex items-center gap-3 px-1">
+          <span className="relative h-10 w-10 overflow-hidden rounded-full ring-1 ring-[var(--gold)]">
+            <Image
+              src={person.photo}
+              alt=""
+              fill
+              sizes="40px"
+              className="object-cover object-[center_18%]"
+            />
+          </span>
+          <div>
+            <p className="text-[15px] font-medium text-[var(--ivory)]">{person.shortName}</p>
+            <p className="mt-0.5 flex items-center gap-1.5 text-[12px] text-[var(--ivory-dim)]">
+              <span className="twin-pulse h-1.5 w-1.5 rounded-full bg-[#9be38a]" />
+              Live twin
+            </p>
+          </div>
+        </div>
+        <div className="flex min-h-0 flex-1 flex-col">
+          <TwinPanel />
+        </div>
       </section>
     </div>
   );

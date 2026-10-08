@@ -22,6 +22,9 @@ const display = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "https://sanjaykumarkureel.github.io",
+  ),
   title: {
     default: `${person.name}, ${person.honorific}`,
     template: `%s · ${person.monogram}`,
@@ -32,7 +35,7 @@ export const metadata: Metadata = {
     title: `${person.name}, ${person.honorific}`,
     description: `${person.title} — ${person.disciplines.join(" · ")}`,
     type: "profile",
-    images: [{ url: "/sanjay.jpg", alt: `${person.name}, ${person.honorific}` }],
+    images: [{ url: person.photo, alt: `${person.name}, ${person.honorific}` }],
   },
 };
 

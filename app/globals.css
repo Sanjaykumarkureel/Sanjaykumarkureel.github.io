@@ -104,19 +104,6 @@ a {
   transform: scaleX(1);
 }
 
-.reveal {
-  opacity: 0;
-  transform: translateY(18px);
-  animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-@keyframes rise {
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
 @keyframes marquee {
   from {
     transform: translateX(0);
@@ -162,15 +149,29 @@ a {
   transform-origin: left;
 }
 
-.twin-fab {
+.twin-glass {
+  background: rgba(16, 17, 21, 0.78);
+  backdrop-filter: blur(28px) saturate(1.35);
+  -webkit-backdrop-filter: blur(28px) saturate(1.35);
   box-shadow:
-    0 0 0 1px rgba(201, 165, 106, 0.4),
-    0 14px 36px rgba(0, 0, 0, 0.45),
-    0 0 36px rgba(201, 165, 106, 0.22);
+    0 24px 80px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(255, 255, 255, 0.08) inset;
 }
 
-.twin-panel {
-  animation: twin-rise 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+.twin-island {
+  animation: twin-island-in 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.twin-scrim {
+  animation: twin-fade 0.28s ease;
+}
+
+.twin-launch {
+  animation: twin-launch-in 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.twin-pulse {
+  animation: twin-pulse 1.8s ease-in-out infinite;
 }
 
 .twin-dots span {
@@ -190,10 +191,40 @@ a {
   animation-delay: 0.28s;
 }
 
-@keyframes twin-rise {
+@keyframes twin-island-in {
   from {
     opacity: 0;
-    transform: translateY(14px) scale(0.97);
+    transform: translateY(18px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes twin-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(155, 227, 138, 0.55);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(155, 227, 138, 0);
+  }
+}
+
+@keyframes twin-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes twin-launch-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
@@ -215,9 +246,11 @@ a {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal,
   .marquee-track,
-  .twin-panel,
+  .twin-island,
+  .twin-scrim,
+  .twin-launch,
+  .twin-pulse,
   .twin-dots span {
     animation: none;
     opacity: 1;
