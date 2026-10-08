@@ -21,7 +21,7 @@ Checks:
 
 ```bash
 npm run lint
-npx tsc --noEmit
+npx next typegen && npx tsc --noEmit
 npm run build
 ```
 
