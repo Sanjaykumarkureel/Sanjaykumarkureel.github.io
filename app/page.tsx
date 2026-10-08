@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { AttributeMap } from "@/components/AttributeMap";
 import { Eyebrow } from "@/components/Section";
 import {
   agentic,
@@ -19,24 +20,6 @@ export default function Home() {
         <div className="site-grid pointer-events-none absolute inset-0" />
         <div className="pointer-events-none absolute -right-24 top-10 h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle,rgba(201,165,106,0.18),transparent_62%)]" />
         <div className="pointer-events-none absolute -left-20 bottom-0 h-72 w-72 rounded-full bg-[radial-gradient(circle,rgba(216,90,58,0.14),transparent_65%)]" />
-        <svg
-          className="pointer-events-none absolute right-[-4rem] top-24 hidden h-[420px] w-[420px] text-[var(--gold)] opacity-40 lg:block"
-          viewBox="0 0 400 400"
-          fill="none"
-          aria-hidden
-        >
-          <circle cx="200" cy="200" r="158" stroke="currentColor" strokeWidth="0.6" />
-          <circle cx="200" cy="200" r="112" stroke="currentColor" strokeWidth="0.6" />
-          <circle cx="200" cy="200" r="58" stroke="currentColor" strokeWidth="0.8" />
-          <circle cx="200" cy="200" r="18" fill="currentColor" opacity="0.35" />
-          <path d="M200 42v316M42 200h316" stroke="currentColor" strokeWidth="0.4" />
-          <path
-            d="M86 118c46 28 92-40 148-12s86 8 80 78"
-            stroke="currentColor"
-            strokeWidth="0.7"
-          />
-        </svg>
-
         <div className="relative mx-auto max-w-6xl px-5 pb-16 pt-10 sm:px-8 sm:pt-20">
           <div className="flex items-center justify-between gap-4">
             <Eyebrow index="01">Independent research</Eyebrow>
@@ -101,6 +84,23 @@ export default function Home() {
                 ),
               )}
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t border-[var(--line)] bg-[var(--ink)]">
+        <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
+          <Eyebrow index="Map">A living figure</Eyebrow>
+          <h2 className="mt-4 max-w-3xl font-[family-name:var(--font-display)] text-4xl sm:text-5xl">
+            Every key attribute, in motion.
+          </h2>
+          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-[var(--ivory-dim)] sm:text-base">
+            Three orbits around mechanical memory: the scientific disciplines, the
+            lines of inquiry, and the personal compass — behaviour, writing,
+            learning, and the public record.
+          </p>
+          <div className="mt-10">
+            <AttributeMap />
           </div>
         </div>
       </section>
