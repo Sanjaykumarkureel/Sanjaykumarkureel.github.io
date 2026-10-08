@@ -18,7 +18,10 @@ const nextConfig: NextConfig = {
   basePath,
   env: {
     NEXT_PUBLIC_BASE_PATH: basePath,
-    NEXT_PUBLIC_TWIN_ENABLED: process.env.GITHUB_PAGES === "true" ? "0" : "1",
+    NEXT_PUBLIC_TWIN_ENABLED:
+      process.env.GITHUB_PAGES === "true" && !process.env.NEXT_PUBLIC_TWIN_API
+        ? "0"
+        : "1",
     NEXT_PUBLIC_TWIN_API: process.env.NEXT_PUBLIC_TWIN_API ?? "",
   },
   turbopack: {

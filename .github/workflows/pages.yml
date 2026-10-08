@@ -19,6 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GITHUB_PAGES: "true"
+      NEXT_PUBLIC_TWIN_API: "https://site-liart-three-18.vercel.app/api/twin/"
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -27,7 +28,7 @@ jobs:
           cache: npm
       - run: npm ci
       - name: Omit the twin API from the static export
-        run: rm -rf app/api app/twin
+        run: rm -rf app/api
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3
         with:
